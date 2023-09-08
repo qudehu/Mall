@@ -16,6 +16,8 @@
     <modules>
         <module>order</module>
         <module>stock</module>
+        <module>order-nacos</module>
+        <module>stock-nacos</module>
     </modules>
 
     <!--不做打包-->
@@ -26,6 +28,7 @@
         <spring.cloud.alibaba.version>2.2.5.RELEASE</spring.cloud.alibaba.version>
         <spring.boot.version>2.3.11.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
+        <spring.boot.maven.plugin>2.3.11.RELEASE</spring.boot.maven.plugin>
     </properties>
 
     <dependencies>
@@ -80,6 +83,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.maven.plugin}</version>
             </plugin>
         </plugins>
     </build>
