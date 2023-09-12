@@ -3,6 +3,8 @@ package com.dehu.order;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
  */
 
 @SpringBootApplication
+//@EnableDiscoveryClient  //服务发现组件的注册，后期已可以省略
 public class OrderApplication {
 
     public static void main(String[] args) {
@@ -26,6 +29,7 @@ public class OrderApplication {
      * RestTemplate，不需要写配置类了
      */
     @Bean
+    @LoadBalanced //添加loadBalance注解，可以使用nacos的模式进行调用
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
     }
