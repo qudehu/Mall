@@ -19,6 +19,11 @@ spring:
 #        永久实例，即使宕机了也不会删除实例，
 #        namespace: public 可以对相同特征的服务进行归类分组管理
 
+#使用yml方式修改服务的负载均衡方式-使用naco官方的负载均衡策略
+stock-nacos:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule
+
 #使用自定义的方式修改服务的负载均衡方式
 #stock-nacos:
 #  ribbon:
