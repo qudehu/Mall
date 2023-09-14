@@ -22,10 +22,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 //@EnableDiscoveryClient  //服务发现组件的注册，后期已可以省略
-@RibbonClients(value = {
+//@RibbonClients(value = {
         //该注解内可以配置多个，对服务进行配置，可以针对不同的服务使用不同的负载均衡策略,
-        @RibbonClient(name = "stock-nacos", configuration = RibbonRandomRuleConfig.class)
-})
+        //@RibbonClient(name = "stock-nacos", configuration = RibbonRandomRuleConfig.class)
+//})
 public class OrderApplication {
 
     public static void main(String[] args) {

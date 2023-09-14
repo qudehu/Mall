@@ -18,3 +18,8 @@ spring:
 #        ephemeral: false 默认为true（临时实例），当服务宕机时，超过心跳，就会将实例进行剔除
 #        永久实例，即使宕机了也不会删除实例，
 #        namespace: public 可以对相同特征的服务进行归类分组管理
+
+#使用自定义的方式修改服务的负载均衡方式
+stock-nacos:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.dehu.ribbon.rule.CustomRule
