@@ -20,6 +20,13 @@ spring:
 #        namespace: public 可以对相同特征的服务进行归类分组管理
 
 #使用自定义的方式修改服务的负载均衡方式
-stock-nacos:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.dehu.ribbon.rule.CustomRule
+#stock-nacos:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.dehu.ribbon.rule.CustomRule
+
+ribbon:
+  eager-load:
+    #开启ribbon饥饿加载
+    enabled: true
+    #配置服务使用饥饿加载，如果存在多个服务，则使用逗号分隔
+    clients: stock-nacos
