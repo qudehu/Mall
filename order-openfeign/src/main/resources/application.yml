@@ -29,6 +29,10 @@ feign:
     config:
       product-nacos:
         loggerLevel: BASIC
+        # 连接超时时间，默认2s
+        connectTimeout: 5000
+        # 请求处理超时时间，默认5s
+        readTimeout: 10000
         contract: feign.Contract.Default # 修改product为默认的契约机制，（还原为feign原生的注解，一般使用配置文件的方式而非配置类的形式）
         request-interceptors:
           com.dehu.order.interceptor.feign.CustomFeignInterceptor

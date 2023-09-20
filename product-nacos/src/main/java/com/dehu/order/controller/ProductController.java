@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Classname OrderController
@@ -25,7 +26,8 @@ public class ProductController {
 
 
     @RequestMapping("/{id}")
-    public String add(@PathVariable Integer id) {
+    public String add(@PathVariable Integer id) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(4);
         System.out.println("查询商品：" + id);
         return "商品：" + id;
 
