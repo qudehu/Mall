@@ -24,4 +24,8 @@ logging:
   level:
 #   只对这个文件夹下的文件设置debug级别
     com.dehu.order.feign: debug
-
+feign:
+  client:
+    config:
+      product-nacos:
+        loggerLevel: BASIC

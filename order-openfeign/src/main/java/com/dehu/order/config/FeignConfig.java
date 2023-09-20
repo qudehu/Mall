@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  *  局部配置： 1. 通过配置类：如果只想针对某一个服务进行配置， 就不要加@Configuration
  *           2. 通过配置文件
  */
-@Configuration
+//@Configuration
 public class FeignConfig {
 
     @Bean
