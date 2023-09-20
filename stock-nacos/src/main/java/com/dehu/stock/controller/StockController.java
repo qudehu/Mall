@@ -23,7 +23,8 @@ public class StockController {
 
     @RequestMapping("/reduct")
     public String reduce() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(1);
+        //由于有超时，所以导致访问失败
+        //TimeUnit.SECONDS.sleep(1);
         System.out.println("扣减库存");
         return "扣减库存" + ",对应端口：" + port;
     }
