@@ -30,3 +30,5 @@ feign:
       product-nacos:
         loggerLevel: BASIC
         contract: feign.Contract.Default # 修改product为默认的契约机制，（还原为feign原生的注解，一般使用配置文件的方式而非配置类的形式）
+        request-interceptors:
+          com.dehu.order.interceptor.feign.CustomFeignInterceptor
