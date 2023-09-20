@@ -1,5 +1,6 @@
 package com.dehu.order.controller;
 
+import com.dehu.order.feign.ProductFeignService;
 import com.dehu.order.feign.StockFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,15 +22,19 @@ import javax.annotation.Resource;
 public class OrderController {
 
 
-    @Autowired
+    @Resource
     StockFeignService stockFeignService;
+
+    @Resource
+    ProductFeignService productFeignService;
 
     @RequestMapping("/add")
     public String add() {
         System.out.println("下单成功");
         String msg = stockFeignService.reduce();
-        return "feign下单成功：" + msg;
-
+        String add = productFeignService.get(1);
+        return "feign下单成功：" + msg + "-" + add;
     }
+
 
 }

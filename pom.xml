@@ -20,6 +20,7 @@
         <module>stock-nacos</module>
         <module>order-ribbon</module>
         <module>order-openfeign</module>
+        <module>product-nacos</module>
     </modules>
 
     <!--不做打包-->
