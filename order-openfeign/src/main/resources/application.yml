@@ -18,3 +18,10 @@ spring:
 #        ephemeral: false 默认为true（临时实例），当服务宕机时，超过心跳，就会将实例进行剔除
 #        永久实例，即使宕机了也不会删除实例，
 #        namespace: public 可以对相同特征的服务进行归类分组管理
+
+#        springboot的默认日志级别是info，feign的debug日志级别就不会输入
+logging:
+  level:
+#   只对这个文件夹下的文件设置debug级别
+    com.dehu.order.feign: debug
+
