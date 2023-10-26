@@ -1,0 +1,5 @@
+spring:
+  application:
+#    会自动根据所配置的名字，拉取对应的dataid的配置文件，如果dataid和服务名称不一致，则需要手动指定dataid
+#    此时，包名和dataid一致，可以不一致，只要对应dataid即可
+    name: com.dehu.config

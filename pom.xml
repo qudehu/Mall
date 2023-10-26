@@ -21,6 +21,7 @@
         <module>order-ribbon</module>
         <module>order-openfeign</module>
         <module>product-nacos</module>
+        <module>config-nacos</module>
     </modules>
 
     <!--不做打包-->
