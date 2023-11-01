@@ -19,7 +19,8 @@ public class ConfigApplication {
             String userSex = applicationContext.getEnvironment().getProperty("user.sex");
             String userEmail = applicationContext.getEnvironment().getProperty("user.email");
             String config = applicationContext.getEnvironment().getProperty("user.config");
-            System.err.println("user name :" + userName + "; age: " + userAge + "; sex: " + userSex + "; email: " + userEmail + ";config:" + config);
+            String userTel = applicationContext.getEnvironment().getProperty("user.tel");
+            System.err.println("user name :" + userName + "; age: " + userAge + "; sex: " + userSex + "; email: " + userEmail + "; tel: " + userTel + ";config:" + config);
             TimeUnit.SECONDS.sleep(1);
         }
 
