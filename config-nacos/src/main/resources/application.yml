@@ -1,8 +1,9 @@
 server:
   port: 8080
-#spring:
-#  profiles:
-#    active: dev
+#  这里面的dev或test对应的是配置文件，Bootstrap文件中的dev是对应的命名空间
+spring:
+  profiles:
+    active: dev
 
 #在配置中心，可以通过profile进行设置
 #只有默认的配置文件才能结合profile进行使用

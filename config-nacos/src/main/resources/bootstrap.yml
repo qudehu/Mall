@@ -23,6 +23,6 @@ spring:
         file-extension: yaml
 #        nacos将无法感应到配置的变化
 #        refresh-enabled: false
-        namespace: dev #配置命名空间，如果没有指定id，则需要使用默认生成的id，如果名称和id一致，则都可以，一般代表不同的环境，如开发，测试，生产
-        group: Mall #配置对应的组，一般是项目名称，如电商项目，医疗项目
+#        namespace: dev #配置命名空间，如果没有指定id，则需要使用默认生成的id，如果名称和id一致，则都可以，一般代表不同的环境，如开发，测试，生产
+#        group: Mall #配置对应的组，一般是项目名称，如电商项目，医疗项目
 
