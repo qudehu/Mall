@@ -16,8 +16,10 @@ public class ConfigApplication {
         while (true) {
             String userName = applicationContext.getEnvironment().getProperty("user.name");
             String userAge = applicationContext.getEnvironment().getProperty("user.age");
+            String userSex = applicationContext.getEnvironment().getProperty("user.sex");
+            String userEmail = applicationContext.getEnvironment().getProperty("user.email");
             String config = applicationContext.getEnvironment().getProperty("user.config");
-            System.err.println("user name :" + userName + "; age: " + userAge + ";config:" + config);
+            System.err.println("user name :" + userName + "; age: " + userAge + "; sex: " + userSex + "; email: " + userEmail + ";config:" + config);
             TimeUnit.SECONDS.sleep(1);
         }
 
