@@ -106,12 +106,49 @@ public class HelloController {
     }
 
     /**
-     * 初始化
+     * 初始化，熔断降级
      */
-    @PostConstruct
-    public void initDegradeRule() {
+    @PostConstruct  // 初始化
+    public void initDegradeRule(){
+        /*降级规则 异常*/
+        List<DegradeRule> degradeRules = new ArrayList<>();
+        DegradeRule degradeRule = new DegradeRule();
+        degradeRule.setResource(DEGRADE_RESOURCE_NAME);
+        // 设置规则侧率： 异常数
+        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_EXCEPTION_COUNT);
+        // 触发熔断异常数 ： 2
+        degradeRule.setCount(2);
+        // 触发熔断最小请求数:2
+        degradeRule.setMinRequestAmount(2);
+        // 统计时长：  单位：ms    1分钟
+        degradeRule.setStatIntervalMs(60*1000); //  时间太短不好测
+
+        // 一分钟内： 执行了2次  出现了2次异常  就会触发熔断
+
+        // 熔断持续时长 ： 单位 秒
+        // 一旦触发了熔断， 再次请求对应的接口就会直接调用  降级方法。
+        // 10秒过了后——半开状态： 恢复接口请求调用， 如果第一次请求就异常， 再次熔断，不会根据设置的条件进行判定
+        degradeRule.setTimeWindow(10);
+
+
+        degradeRules.add(degradeRule);
+        DegradeRuleManager.loadRules(degradeRules);
+
+        /*
+        慢调用比率--DEGRADE_GRADE_RT
+        degradeRule.setGrade(RuleConstant.DEGRADE_GRADE_RT);
+        degradeRule.setCount(100);
+        degradeRule.setTimeWindow(10);
+        //请求总数小于minRequestAmount时不做熔断处理
+        degradeRule.setMinRequestAmount(2);
+        // 在这个时间段内2次请求
+        degradeRule.setStatIntervalMs(60*1000*60);   //  时间太短不好测
+        // 慢请求率：慢请求数/总请求数> SlowRatioThreshold ，
+        // 这里要设置小于1   因为慢请求数/总请求数 永远不会大于1
+        degradeRule.setSlowRatioThreshold(0.9);*/
 
     }
+
 
     /**
      * @SentinelResource 改善接口中资源定义和被被流控降级后的处理方法
@@ -158,5 +195,30 @@ public class HelloController {
         ex.printStackTrace();
         return new User("流控！！");
     }
+
+
+    /**
+     * 在规定时间内超过异常的次数，则对其进行降级
+     * @param id
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping("/degrade")
+    @SentinelResource(value = DEGRADE_RESOURCE_NAME,entryType = EntryType.IN,
+            blockHandler = "blockHandlerForFb")
+    public User degrade(String id) throws InterruptedException {
+        // 异常数\比例
+        throw new RuntimeException("异常");
+
+        /* 慢调用比例
+        TimeUnit.SECONDS.sleep(1);
+        return new User("正常");*/
+    }
+
+    public User blockHandlerForFb(String id, BlockException ex) {
+        return new User("熔断降级");
+    }
+
+
 
 }
