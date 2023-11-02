@@ -25,6 +25,13 @@
             <version>1.18.18</version>
         </dependency>
 
+        <!--sentinel核心库-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
     </dependencies>
 
 
