@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Classname OrderController
@@ -39,6 +40,19 @@ public class OrderController {
      */
     public String flowBlockHandler(BlockException e) {
         return "单独流控flow";
+    }
+
+    /**
+     * 并发线程-对应方法
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping("/flowThread")
+    @SentinelResource(value = "flowThread",blockHandler = "flowBlockHandler")
+    public String flowThread() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println("正常访问");
+        return "正常访问";
     }
 
 
