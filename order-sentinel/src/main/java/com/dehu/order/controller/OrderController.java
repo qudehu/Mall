@@ -19,6 +19,12 @@ import java.util.Date;
 @RequestMapping("/order")
 public class OrderController {
 
+    @RequestMapping("/add")
+    public String add() {
+        System.out.println("访问add：" + new Date());
+        return "正常访问add";
+    }
+
     @RequestMapping("/flow")
     @SentinelResource(value = "flow", blockHandler = "flowBlockHandler")     // 针对某一资源，不使用统一的流控处理
     public String flow() {

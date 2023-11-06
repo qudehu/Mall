@@ -3,6 +3,7 @@ server:
 
 spring:
   application:
+#    控制台名称，后期会注册到sentinel中
     name: order-sentinel-demo
   cloud:
     sentinel:
