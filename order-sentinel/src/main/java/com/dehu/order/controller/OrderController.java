@@ -35,6 +35,7 @@ public class OrderController {
 
     /**
      * 测试时，最好使用干净的浏览器，否则相应时间较长
+     *
      * @param e
      * @return
      */
@@ -44,15 +45,26 @@ public class OrderController {
 
     /**
      * 并发线程-对应方法
+     *
      * @return
      * @throws InterruptedException
      */
     @RequestMapping("/flowThread")
-    @SentinelResource(value = "flowThread",blockHandler = "flowBlockHandler")
+    @SentinelResource(value = "flowThread", blockHandler = "flowBlockHandler")
     public String flowThread() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
         System.out.println("正常访问");
         return "正常访问";
+    }
+
+    /**
+     * 统一异常处理-请求方法
+     * @return
+     */
+    @RequestMapping("/rule")
+    public String rule() {
+        System.out.println("正常访问rule");
+        return "正常访问rule";
     }
 
 
