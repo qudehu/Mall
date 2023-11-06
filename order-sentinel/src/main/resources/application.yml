@@ -1,2 +1,12 @@
 server:
   port: 8120
+
+spring:
+  application:
+    name: order-sentinel-demo
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+
+

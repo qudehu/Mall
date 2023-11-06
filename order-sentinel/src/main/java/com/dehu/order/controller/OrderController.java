@@ -1,10 +1,10 @@
 package com.dehu.order.controller;
 
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @Classname OrderController
@@ -18,5 +18,10 @@ import javax.annotation.Resource;
 @RequestMapping("/order")
 public class OrderController {
 
+    @RequestMapping("/flow")
+    public String flow() {
+        System.out.println("访问：" + new Date());
+        return "正常访问";
+    }
 
 }
