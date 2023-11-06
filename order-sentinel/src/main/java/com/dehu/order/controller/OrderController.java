@@ -32,6 +32,11 @@ public class OrderController {
         return "正常访问";
     }
 
+    /**
+     * 测试时，最好使用干净的浏览器，否则相应时间较长
+     * @param e
+     * @return
+     */
     public String flowBlockHandler(BlockException e) {
         return "单独流控flow";
     }
