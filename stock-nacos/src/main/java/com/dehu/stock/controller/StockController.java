@@ -29,4 +29,12 @@ public class StockController {
         return "扣减库存" + ",对应端口：" + port;
     }
 
+    @RequestMapping("/reduct2")
+    public String reduce2() {
+        int i = 1/0;
+        System.out.println("扣减库存222");
+        return "扣减库存" + ",对应端口：" + port;
+    }
+
+
 }
