@@ -20,8 +20,8 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/order")
 public class OrderController {
 
-    @RequestMapping("/add")
-    public String add() {
+    @RequestMapping("/add2")
+    public String add2() {
         System.out.println("访问add：" + new Date());
         return "正常访问add";
     }
@@ -59,12 +59,35 @@ public class OrderController {
 
     /**
      * 统一异常处理-请求方法
+     *
      * @return
      */
     @RequestMapping("/rule")
     public String rule() {
         System.out.println("正常访问rule");
         return "正常访问rule";
+    }
+
+    /**
+     * 关联流控   访问add方法 触发get方法限流
+     *
+     * @return
+     */
+    @RequestMapping("/add")
+    public String add() {
+        System.out.println("下单成功!");
+        return "生成订单";
+    }
+
+    /**
+     * 关联流控   访问add方法 触发get方法限流
+     *
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping("/get")
+    public String get() throws InterruptedException {
+        return "查询订单";
     }
 
 
