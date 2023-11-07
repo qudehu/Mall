@@ -119,4 +119,15 @@ public class OrderController {
     }
 
 
+    /**
+     * 测试异常比例
+     *
+     * @return
+     */
+    @RequestMapping("/err")
+    public String err() {
+        int a = 1 / 0;
+        return "hello";
+    }
+
 }
