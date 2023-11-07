@@ -10,3 +10,8 @@ spring:
       discovery:
         username: nacos
         password: nacos
+        
+#  openfeign整合sentinel
+feign:
+  sentinel:
+    enabled: true

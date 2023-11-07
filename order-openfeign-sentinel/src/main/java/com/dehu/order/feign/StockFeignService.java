@@ -4,7 +4,7 @@ import com.dehu.order.config.FeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@FeignClient(name = "stock-nacos", path = "/stock")
+@FeignClient(name = "stock-nacos", path = "/stock",fallback = StockFeignServiceFallback.class)
 public interface StockFeignService {
 
     @RequestMapping("/reduct2")
