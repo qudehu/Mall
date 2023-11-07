@@ -2,9 +2,11 @@ package com.dehu.order.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.dehu.order.service.IOrderService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +21,10 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+
+
+    @Resource
+    private IOrderService orderService;
 
     @RequestMapping("/add2")
     public String add2() {
@@ -88,6 +94,28 @@ public class OrderController {
     @RequestMapping("/get")
     public String get() throws InterruptedException {
         return "查询订单";
+    }
+
+
+    /**
+     * 关联流控   访问/add 触发/get
+     *
+     * @return
+     */
+    @RequestMapping("/test1")
+    public String test1() {
+        return orderService.getUser();
+    }
+
+    /**
+     * 关联流控  访问/add 触发/get
+     *
+     * @return
+     * @throws InterruptedException
+     */
+    @RequestMapping("/test2")
+    public String test2() throws InterruptedException {
+        return orderService.getUser();
     }
 
 

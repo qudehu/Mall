@@ -3,11 +3,12 @@ server:
 
 spring:
   application:
-#    控制台名称，后期会注册到sentinel中
+    #    控制台名称，后期会注册到sentinel中
     name: order-sentinel-demo
   cloud:
     sentinel:
       transport:
         dashboard: 127.0.0.1:8080
+      web-context-unify: false   # 使其出现调用链路，默认是将调用链路进行收敛
 
 
