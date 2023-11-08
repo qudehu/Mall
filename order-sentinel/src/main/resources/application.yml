@@ -10,5 +10,14 @@ spring:
       transport:
         dashboard: 127.0.0.1:8080
       web-context-unify: false   # 使其出现调用链路，默认是将调用链路进行收敛
+      datasource:
+        flow-rule:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            username: nacos
+            password: nacos
+            data-id: order-sentinel-flow-rule
+            rule-type: flow
+
 
 
