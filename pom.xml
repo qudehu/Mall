@@ -24,6 +24,7 @@
         <module>config-nacos</module>
         <module>order-sentinel</module>
         <module>order-openfeign-sentinel</module>
+        <module>common</module>
     </modules>
 
     <!--不做打包-->
