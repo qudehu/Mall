@@ -11,7 +11,7 @@ import javazoom.jl.player.Player;
 
 /**
  * 播放本地MP3文件
- * @author 管雷鸣
+ * @author qudehu
  *
  */
 public class MP3Play {
