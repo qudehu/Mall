@@ -14,9 +14,8 @@ public class StockController {
     StockService stockService;
 
     @RequestMapping("/reduct")
-    public String reduct(@RequestParam(value = "productId") Integer productId) {
+    public String reduct(@RequestParam(value="productId") Integer productId){
         stockService.reduct(productId);
-
         return "扣减库存";
     }
 

@@ -5,6 +5,7 @@ import com.dehu.stock.pojo.Stock;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+
 @Mapper
 public interface StockMapper {
     int deleteByPrimaryKey(Integer id);
