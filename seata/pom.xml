@@ -15,8 +15,10 @@
 
 
     <modules>
+        <module>alibaba-order-seata</module>
         <module>order-seata</module>
         <module>stock-seata</module>
+        <module>alibaba-stock-seata</module>
 
     </modules>
 
