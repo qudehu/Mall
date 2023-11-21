@@ -1,0 +1,22 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: api-gateway
+  cloud:
+#    gateway的配置
+    gateway:
+      routes:
+        - id: order_route           #路由的唯一标识
+          uri: http://localhost:8010     #需要转发的地址
+          # 断言的规则
+          predicates:
+            - Path=/order-serv/**   #匹配到的路径，注意要写字符串，不是key-value的形式
+              # http:localhost:8088/order-serv/order/add    路由到↓
+              # http:localhost:8020/order-serv/order/add    路由到↓
+          filters:
+            - StripPrefix=1         #转发之前去掉第一层路径
+              # http://localhost:8020/order/add
+#        - id: stock_route          # 后续可以添加多个
+
+

@@ -26,6 +26,7 @@
         <module>order-openfeign-sentinel</module>
         <module>common</module>
         <module>seata</module>
+        <module>gateway</module>
     </modules>
 
     <!--不做打包-->
