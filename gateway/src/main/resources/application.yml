@@ -4,16 +4,33 @@ spring:
   application:
     name: api-gateway
   cloud:
-#    gateway的配置
+    # gateway的配置
     gateway:
-      discovery:
-        locator:
-          enabled: true             #启用自动识别nacos的服务，根据服务名进行识别
-    # 配置nacos
+      #路由规则
+      routes:
+        - id: order_route  # 路由的唯一标识，路由到order
+          uri: lb://order-nacos  #需要转发的地址   lb: 使用nacos中的本地负载均衡策略  order-service服务名
+          #断言规则 用于路由规则的匹配
+          predicates:
+            - Path=/order/**
+            # http://localhost:8088/order-serv/order/add 路由到↓
+            # http://localhost:8020/order-serv/order/add
+            #- After=2000-12-31T23:59:59.789+08:00[Asia/Shanghai]     #在什么什么时间后可以访问
+            #- Header=X-Request-Id,\d+                                #这个参数必须是数字
+            #- Method=GET                                             #必须是get方法
+            #- Query=name,qudehu|zhuge                                #查询参数为name，且值只能为qudehu或zhuge
+            - CheckAuth=qudehu2                                      #自定义的查询参数，参数必须为CheckAuth，值必须为qudehu，此时访问http://localhost:8088/order/add，不能访问，只有此时值为qudehu的时候才能进行访问
+            #filters:
+            #  - CheckAuth=xushu
+            #- AddRequestHeader=X-Request-color, red  #添加请求头
+            #  - PrefixPath=/mall-order  # 添加前缀 对应微服务需要配置context-path
+            #- RedirectTo=302, https://www.baidu.com/
+            #- SetStatus= 404
+            #  - StripPrefix=1  # 转发之前去掉第一层路径
+            # http://localhost:8020/order/add
+      #- id: stock_route
     nacos:
       discovery:
-        server-addr: 192.168.162.1:8848
+        server-addr: 127.0.0.1:8848
         username: nacos
         password: nacos
-
-
