@@ -1,5 +1,6 @@
 package com.dehu.order.controller;
 
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -27,8 +28,17 @@ public class OrderController {
         System.out.println("下单成功");
         String msg = restTemplate.getForObject("http://stock-nacos/stock/reduct", String.class);
         return "下单成功：" + msg;
-
-
     }
+
+    /**
+     *
+     * @param color
+     * @return
+     */
+    @RequestMapping("/header")
+    public String header(@RequestHeader("X-Request-color") String color){
+        return color;
+    }
+
 
 }
