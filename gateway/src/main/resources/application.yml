@@ -20,8 +20,8 @@ spring:
             #- Method=GET                                             #必须是get方法
             #- Query=name,qudehu|zhuge                                #查询参数为name，且值只能为qudehu或zhuge
           #            - CheckAuth=qudehu                                      #自定义的查询参数，参数必须为CheckAuth，值必须为qudehu，此时访问http://localhost:8088/order/add，不能访问，只有此时值为qudehu的时候才能进行访问
-          filters:
-            - CheckAuth=qudehu
+#          filters:
+#            - CheckAuth=qudehu
           #            - AddRequestHeader=X-Request-color, red  #添加请求头
           #  - PrefixPath=/mall-order  # 添加前缀 对应微服务需要配置context-path
           #  - RedirectTo=302, https://www.baidu.com/       #重定向状态码，URL
@@ -43,3 +43,7 @@ spring:
         username: nacos
         password: nacos
 
+# 配置sentinel
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
