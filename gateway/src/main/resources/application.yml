@@ -29,16 +29,17 @@ spring:
           #  - StripPrefix=1  # 转发之前去掉第一层路径，内置的过滤器
         # http://localhost:8020/order/add
       #- id: stock_route
+      # 跨域配置
+      globalcors:
+        cors-configurations:
+          '[/**]': # 允许跨域访问的资源
+            allowedOrigins: "*"   #跨域允许来源
+            allowedMethods:
+              - GET
+              - POST
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
         username: nacos
         password: nacos
-      # 跨域配置
-#      globalcors:
-#        cors-configurations:
-#          '[/**]': # 允许跨域访问的资源
-#            allowedOrigins: "*"   #跨域允许来源
-#            allowedMethods:
-#              - GET
-#              - POST
+
