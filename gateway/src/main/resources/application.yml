@@ -48,7 +48,7 @@ spring:
       transport:
         dashboard: 127.0.0.1:8080
       # 通过配置文件的方式对降级异常进行自定义
-      scg:
-        fallback:
-          mode: response
-          response-body: "{code:'',message:''}"
+#      scg:
+#        fallback:
+#          mode: response
+#          response-body: "{code:'',message:''}"
