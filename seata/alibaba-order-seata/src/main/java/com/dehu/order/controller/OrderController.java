@@ -32,4 +32,18 @@ public class OrderController {
         return "下单成功";
     }
 
+
+    // 获取单个订单信息
+    @RequestMapping("/get/{id}")
+    public Order get(@PathVariable Integer id){
+
+        return orderService.get(id);
+    }
+
+
+    @RequestMapping("/all")
+    public List<Order> getAll() throws InterruptedException {
+
+        return orderService.all();
+    }
 }

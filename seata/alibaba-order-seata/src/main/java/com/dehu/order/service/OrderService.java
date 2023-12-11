@@ -13,4 +13,8 @@ public interface OrderService {
 
      Order create(Order order);
 
+     List<Order> all() throws InterruptedException;
+
+     Order get(Integer id);
+
 }

@@ -41,6 +41,10 @@ public class Order {
         this.status = status;
     }
 
+    /**
+     * 一定要声明toString方法，否则在链路追踪中显示的是地址，而非值
+     * @return
+     */
     @Override
     public String toString() {
         return "Order{" +
